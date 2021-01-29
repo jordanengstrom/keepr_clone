@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Keepr.Data.Services
 {
-    class SqlKeepData : IKeepData
+    public class SqlKeepData : IKeepData
     {
         private readonly KeeprDbContext db;
 
@@ -32,7 +32,6 @@ namespace Keepr.Data.Services
         public Keep Get(int id)
         {
             return db.Keeps.FirstOrDefault(k => k.Id == id);
-
         }
 
         public IEnumerable<Keep> GetAll()
