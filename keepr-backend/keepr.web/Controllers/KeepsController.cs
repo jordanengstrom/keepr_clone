@@ -19,7 +19,66 @@ namespace keepr.web.Controllers
         // GET: Keeps
         public ActionResult Index()
         {
-            return View();
+            var models = db.GetAll();
+            return View(models);
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var model = db.Get(id);
+            if (model == null)
+            {
+                return View("Error");
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Keep editedKeep)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Update(editedKeep);
+                return RedirectToAction("Details", new { id = editedKeep.Id });
+            }
+            return View(editedKeep);
+        }
+
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            var model = db.Get(id);
+            if (model == null)
+            {
+                return View("Error");
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var model = db.Get(id);
+            if (model == null)
+            {
+                return View("Error");
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, string meow)
+        {
+            var model = db.Get(id);
+            if (model == null)
+            {
+                return View("Error");
+            }
+            db.Delete(id);
+           return RedirectToAction("Index");
+
         }
 
         [HttpGet]
@@ -35,7 +94,7 @@ namespace keepr.web.Controllers
             if(ModelState.IsValid)
             {
                 db.Add(keep);
-                //return RedirectToAction("Details", new { id = keep.Id})
+                return RedirectToAction("Details", new { id = keep.Id });
             }
             return View();
         }

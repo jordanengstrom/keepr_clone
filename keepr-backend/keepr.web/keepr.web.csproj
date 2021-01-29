@@ -214,6 +214,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Keeps\Create.cshtml" />
     <Content Include="Views\Keeps\Index.cshtml" />
+    <Content Include="Views\Keeps\Details.cshtml" />
+    <Content Include="Views\Keeps\Delete.cshtml" />
+    <Content Include="Views\Keeps\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
