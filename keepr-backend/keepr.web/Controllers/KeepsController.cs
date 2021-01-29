@@ -1,5 +1,6 @@
 ﻿using Keepr.Data.Models;
 using Keepr.Data.Services;
+using Microsoft.AspNetCore.Cors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace keepr.web.Controllers
             this.db = db;
         }
         // GET: Keeps
+        [DisableCors]
         public ActionResult Index()
         {
             var models = db.GetAll();

@@ -8,15 +8,22 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using Keepr.Data.Models;
 using Keepr.Data.Services;
 
 namespace keepr.web.Api
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class KeepsController : ApiController
     {
-        private KeeprDbContext db = new KeeprDbContext();
+        private readonly KeeprDbContext db;
+
+        public KeepsController(KeeprDbContext db)
+        {
+            this.db = db;
+        }
 
         // GET: api/Keeps
         public IQueryable<Keep> GetKeeps()

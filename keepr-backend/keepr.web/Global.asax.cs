@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Http;
-//using keepr.web.App_Start;
+using keepr.web.Api;
 
 namespace keepr.web
 {
@@ -21,6 +21,17 @@ namespace keepr.web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             ContainerConfig.RegisterContainer(GlobalConfiguration.Configuration);
+
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("CorsPolicy",
+            //        builder => builder.AllowAnyOrigin()
+            //        .AllowAnyMethod()
+            //        .AllowAnyHeader()
+            //        .AllowCredentials());
+            //});
+
+            //app.UseCors("CorsPolicy");
         }
     }
 }
